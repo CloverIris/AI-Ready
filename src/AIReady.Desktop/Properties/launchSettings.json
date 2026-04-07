@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "AIRaedy.Desktop (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "AIRaedy.Desktop (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

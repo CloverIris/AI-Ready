@@ -7,7 +7,7 @@ using Microsoft.UI;
 using System.Runtime.InteropServices;
 using Microsoft.UI.Xaml.Media.Animation;
 
-namespace AIReady.Desktop
+namespace AIRaedy.Desktop
 {
     public sealed partial class MainWindow : Window
     {

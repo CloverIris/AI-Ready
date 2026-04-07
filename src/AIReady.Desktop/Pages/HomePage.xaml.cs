@@ -2,7 +2,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 
-namespace AIReady.Desktop.Pages
+namespace AIRaedy.Desktop.Pages
 {
     public sealed partial class HomePage : Page
     {

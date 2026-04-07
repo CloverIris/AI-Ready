@@ -1,6 +1,6 @@
 using Microsoft.UI.Xaml.Controls;
 
-namespace AIReady.Desktop.Pages
+namespace AIRaedy.Desktop.Pages
 {
     public sealed partial class HelpPage : Page
     {
