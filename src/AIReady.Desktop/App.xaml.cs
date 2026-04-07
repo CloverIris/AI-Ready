@@ -1,3 +1,5 @@
+#nullable enable
+
 using Microsoft.UI.Xaml;
 
 namespace AIReady.Desktop

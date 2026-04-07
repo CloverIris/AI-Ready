@@ -1,10 +1,14 @@
+#nullable enable
+
+using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Windowing;
 using Windows.UI;
 using Microsoft.UI;
-using System.Runtime.InteropServices;
 using Microsoft.UI.Xaml.Media.Animation;
 
 namespace AIReady.Desktop
