@@ -49,19 +49,47 @@
             <!-- 导航菜单项 -->
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="HomeItem" 
-                                   Icon="Home" 
-                                   Content="首页" 
                                    Tag="HomePage"
-                                   IsSelected="True"/>
-                <NavigationViewItem Icon="Play" Content="本地 AI" Tag="LocalPage"/>
-                <NavigationViewItem Icon="Cloud" Content="云端管理" Tag="CloudPage"/>
-                <NavigationViewItem Icon="Library" Content="工作流" Tag="WorkflowsPage"/>
+                                   IsSelected="True">
+                    <NavigationViewItem.Icon>
+                        <SymbolIcon Symbol="Home"/>
+                    </NavigationViewItem.Icon>
+                    <NavigationViewItem.Content>首页</NavigationViewItem.Content>
+                </NavigationViewItem>
+                <NavigationViewItem Tag="LocalPage">
+                    <NavigationViewItem.Icon>
+                        <SymbolIcon Symbol="Play"/>
+                    </NavigationViewItem.Icon>
+                    <NavigationViewItem.Content>本地 AI</NavigationViewItem.Content>
+                </NavigationViewItem>
+                <NavigationViewItem Tag="CloudPage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE753;"/>
+                    </NavigationViewItem.Icon>
+                    <NavigationViewItem.Content>云端管理</NavigationViewItem.Content>
+                </NavigationViewItem>
+                <NavigationViewItem Tag="WorkflowsPage">
+                    <NavigationViewItem.Icon>
+                        <SymbolIcon Symbol="Library"/>
+                    </NavigationViewItem.Icon>
+                    <NavigationViewItem.Content>工作流</NavigationViewItem.Content>
+                </NavigationViewItem>
             </NavigationView.MenuItems>
             
             <!-- 底部菜单项 -->
             <NavigationView.FooterMenuItems>
-                <NavigationViewItem Icon="Help" Content="帮助" Tag="HelpPage"/>
-                <NavigationViewItem Icon="Setting" Content="设置" Tag="SettingsPage"/>
+                <NavigationViewItem Tag="HelpPage">
+                    <NavigationViewItem.Icon>
+                        <SymbolIcon Symbol="Help"/>
+                    </NavigationViewItem.Icon>
+                    <NavigationViewItem.Content>帮助</NavigationViewItem.Content>
+                </NavigationViewItem>
+                <NavigationViewItem Tag="SettingsPage">
+                    <NavigationViewItem.Icon>
+                        <SymbolIcon Symbol="Setting"/>
+                    </NavigationViewItem.Icon>
+                    <NavigationViewItem.Content>设置</NavigationViewItem.Content>
+                </NavigationViewItem>
             </NavigationView.FooterMenuItems>
             
         </NavigationView>
