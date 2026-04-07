@@ -1,10 +1,13 @@
 {
   "profiles": {
-    "AIRaedy.Desktop (Package)": {
-      "commandName": "MsixPackage"
+    "AIReady.Desktop (Unpackaged)": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "WINAPPSDK_RUNTIME": "unpackaged"
+      }
     },
-    "AIRaedy.Desktop (Unpackaged)": {
-      "commandName": "Project"
+    "AIReady.Desktop (Packaged)": {
+      "commandName": "MsixPackage"
     }
   }
 }

@@ -1,6 +1,6 @@
 using Microsoft.UI.Xaml.Controls;
 
-namespace AIRaedy.Desktop.Pages
+namespace AIReady.Desktop.Pages
 {
     public sealed partial class CloudPage : Page
     {

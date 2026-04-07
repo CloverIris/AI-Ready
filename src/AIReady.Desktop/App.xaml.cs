@@ -1,6 +1,6 @@
 using Microsoft.UI.Xaml;
 
-namespace AIRaedy.Desktop
+namespace AIReady.Desktop
 {
     public partial class App : Application
     {
