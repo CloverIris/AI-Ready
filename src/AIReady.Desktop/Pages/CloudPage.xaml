@@ -25,11 +25,11 @@
 
         <!-- 添加服务器按钮 -->
         <Button Grid.Row="1"
-               Content="添加服务器"
                Margin="0,0,0,20">
-            <Button.Icon>
-                <FontIcon Glyph="&#xE710;"/>
-            </Button.Icon>
+            <StackPanel Orientation="Horizontal">
+                <FontIcon Glyph="&#xE710;" Margin="0,0,8,0"/>
+                <TextBlock Text="添加服务器"/>
+            </StackPanel>
         </Button>
 
         <!-- 服务器列表 -->
