@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="AIReady.Desktop.Pages.LocalPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="Transparent">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- 页面标题 -->
+        <TextBlock Grid.Row="0"
+                  Text="本地 AI 环境"
+                  FontSize="28"
+                  FontWeight="Bold"
+                  Foreground="White"
+                  Margin="0,0,0,20"/>
+
+        <!-- 内容区域 -->
+        <ScrollViewer Grid.Row="1">
+            <StackPanel>
+                <!-- 环境状态卡片 -->
+                <Border CornerRadius="8" 
+                       Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
+                       Padding="20"
+                       Margin="0,0,0,20">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="Python 环境"
+                                      FontSize="20"
+                                      FontWeight="SemiBold"
+                                      Foreground="White"/>
+                            <TextBlock Text="Miniconda 未安装"
+                                      FontSize="14"
+                                      Opacity="0.8"
+                                      Foreground="White"
+                                      Margin="0,8,0,0"/>
+                        </StackPanel>
+                        <Button Grid.Column="1"
+                               Content="安装 Miniconda"
+                               VerticalAlignment="Center"/>
+                    </Grid>
+                </Border>
+
+                <!-- 已安装工作流 -->
+                <TextBlock Text="已安装工作流"
+                          FontSize="20"
+                          FontWeight="SemiBold"
+                          Foreground="White"
+                          Margin="0,0,0,12"/>
+                
+                <Border CornerRadius="8"
+                       Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
+                       Padding="20">
+                    <TextBlock Text="暂无已安装的工作流"
+                              Opacity="0.6"
+                              Foreground="White"
+                              HorizontalAlignment="Center"/>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

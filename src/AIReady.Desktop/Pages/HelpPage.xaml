@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="AIReady.Desktop.Pages.HelpPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="Transparent">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- 页面标题 -->
+        <TextBlock Grid.Row="0"
+                  Text="帮助"
+                  FontSize="28"
+                  FontWeight="Bold"
+                  Foreground="White"
+                  Margin="0,0,0,20"/>
+
+        <!-- 帮助内容 -->
+        <ScrollViewer Grid.Row="1">
+            <StackPanel>
+                <Border CornerRadius="8"
+                       Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
+                       Padding="20"
+                       Margin="0,0,0,12">
+                    <StackPanel>
+                        <TextBlock Text="什么是 AI-Ready？"
+                                  FontSize="18"
+                                  FontWeight="SemiBold"
+                                  Foreground="White"/>
+                        <TextBlock Text="AI-Ready 是一款面向个人用户和云算力使用者的 AI 部署管理工具，让每个人都能轻松运行开源 AI 项目。"
+                                  Foreground="White"
+                                  Opacity="0.8"
+                                  TextWrapping="Wrap"
+                                  Margin="0,8,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <Border CornerRadius="8"
+                       Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
+                       Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="如何使用？"
+                                  FontSize="18"
+                                  FontWeight="SemiBold"
+                                  Foreground="White"/>
+                        <TextBlock Text="选择本地 AI 标签页开始配置您的环境，或选择云端管理连接远程服务器。"
+                                  Foreground="White"
+                                  Opacity="0.8"
+                                  TextWrapping="Wrap"
+                                  Margin="0,8,0,0"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

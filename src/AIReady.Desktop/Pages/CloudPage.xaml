@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="AIReady.Desktop.Pages.CloudPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="Transparent">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- 页面标题 -->
+        <TextBlock Grid.Row="0"
+                  Text="云端管理"
+                  FontSize="28"
+                  FontWeight="Bold"
+                  Foreground="White"
+                  Margin="0,0,0,20"/>
+
+        <!-- 添加服务器按钮 -->
+        <Button Grid.Row="1"
+               Content="添加服务器"
+               Margin="0,0,0,20">
+            <Button.Icon>
+                <FontIcon Glyph="&#xE710;"/>
+            </Button.Icon>
+        </Button>
+
+        <!-- 服务器列表 -->
+        <ScrollViewer Grid.Row="2">
+            <Border CornerRadius="8"
+                   Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
+                   Padding="40">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <FontIcon Glyph="&#xE753;" FontSize="48" Opacity="0.6" Foreground="White"/>
+                    <TextBlock Text="还没有云服务器"
+                              FontSize="18"
+                              FontWeight="SemiBold"
+                              Foreground="White"
+                              Margin="0,16,0,8"
+                              HorizontalAlignment="Center"/>
+                    <TextBlock Text="添加服务器后即可远程部署 AI 项目"
+                              Opacity="0.6"
+                              Foreground="White"
+                              HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </ScrollViewer>
+    </Grid>
+</Page>
