@@ -40,16 +40,113 @@
                                       FontSize="20"
                                       FontWeight="SemiBold"
                                       Foreground="White"/>
-                            <TextBlock Text="Miniconda 未安装"
+                            <TextBlock x:Name="MinicondaStatusText"
+                                      Text="检测中..."
                                       FontSize="14"
                                       Opacity="0.8"
                                       Foreground="White"
                                       Margin="0,8,0,0"/>
+                            <ProgressBar x:Name="MinicondaInstallProgress"
+                                        IsIndeterminate="False"
+                                        Visibility="Collapsed"
+                                        Margin="0,8,0,0"
+                                        Maximum="1"
+                                        Minimum="0"/>
+                            <TextBlock x:Name="MinicondaInstallLog"
+                                      FontSize="12"
+                                      Opacity="0.7"
+                                      Foreground="White"
+                                      TextWrapping="Wrap"
+                                      MaxHeight="60"
+                                      Visibility="Collapsed"/>
                         </StackPanel>
-                        <Button Grid.Column="1"
-                               Content="安装 Miniconda"
-                               VerticalAlignment="Center"/>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8">
+                            <Button x:Name="InstallMinicondaButton"
+                                   Content="安装 Miniconda"
+                                   VerticalAlignment="Center"
+                                   Click="InstallMinicondaButton_Click"
+                                   Visibility="Collapsed"/>
+                            <Button x:Name="CreateEnvironmentButton"
+                                   Content="创建环境"
+                                   VerticalAlignment="Center"
+                                   Click="CreateEnvironmentButton_Click"
+                                   Visibility="Collapsed"/>
+                        </StackPanel>
                     </Grid>
+                </Border>
+
+                <!-- 环境列表 -->
+                <TextBlock Text="Conda 环境"
+                          FontSize="20"
+                          FontWeight="SemiBold"
+                          Foreground="White"
+                          Margin="0,0,0,12"
+                          x:Name="EnvironmentsHeader"
+                          Visibility="Collapsed"/>
+                
+                <Border CornerRadius="8"
+                       Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
+                       Padding="16"
+                       x:Name="EnvironmentsBorder"
+                       Visibility="Collapsed">
+                    <ListView x:Name="EnvironmentsList"
+                             SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="8,4">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0">
+                                        <TextBlock Text="{Binding Name}"
+                                                  FontWeight="SemiBold"
+                                                  Foreground="White"/>
+                                        <TextBlock Text="{Binding Path}"
+                                                  FontSize="12"
+                                                  Opacity="0.7"
+                                                  Foreground="White"/>
+                                    </StackPanel>
+                                    <TextBlock Grid.Column="1"
+                                              Text="当前激活"
+                                              FontSize="12"
+                                              Opacity="0.8"
+                                              Foreground="#4CAF50"
+                                              VerticalAlignment="Center"
+                                              Margin="0,0,16,0"
+                                              Visibility="{Binding IsActive, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                    <Button Grid.Column="2"
+                                           Content="删除"
+                                           Style="{StaticResource DefaultButtonStyle}"
+                                           Click="DeleteEnvironmentButton_Click"
+                                           Tag="{Binding Name}"
+                                           IsEnabled="{Binding IsActive, Converter={StaticResource InverseBoolConverter}}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Border>
+
+                <!-- 空状态 -->
+                <Border CornerRadius="8"
+                       Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
+                       Padding="40"
+                       x:Name="EmptyEnvironmentState"
+                       Visibility="Collapsed">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <FontIcon Glyph="&#xE756;" FontSize="48" Opacity="0.6" Foreground="White"/>
+                        <TextBlock Text="暂无 Conda 环境"
+                                  FontSize="18"
+                                  FontWeight="SemiBold"
+                                  Foreground="White"
+                                  Margin="0,16,0,8"
+                                  HorizontalAlignment="Center"/>
+                        <TextBlock Text="安装 Miniconda 后可创建 Python 环境"
+                                  Opacity="0.6"
+                                  Foreground="White"
+                                  HorizontalAlignment="Center"/>
+                    </StackPanel>
                 </Border>
 
                 <!-- 已安装工作流 -->
@@ -57,15 +154,24 @@
                           FontSize="20"
                           FontWeight="SemiBold"
                           Foreground="White"
-                          Margin="0,0,0,12"/>
+                          Margin="0,24,0,12"/>
                 
                 <Border CornerRadius="8"
                        Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
-                       Padding="20">
-                    <TextBlock Text="暂无已安装的工作流"
-                              Opacity="0.6"
-                              Foreground="White"
-                              HorizontalAlignment="Center"/>
+                       Padding="40">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <FontIcon Glyph="&#xE7BF;" FontSize="48" Opacity="0.6" Foreground="White"/>
+                        <TextBlock Text="暂无已安装的工作流"
+                                  FontSize="18"
+                                  FontWeight="SemiBold"
+                                  Foreground="White"
+                                  Margin="0,16,0,8"
+                                  HorizontalAlignment="Center"/>
+                        <TextBlock Text="前往「工作流」页面安装 AI 项目"
+                                  Opacity="0.6"
+                                  Foreground="White"
+                                  HorizontalAlignment="Center"/>
+                    </StackPanel>
                 </Border>
             </StackPanel>
         </ScrollViewer>

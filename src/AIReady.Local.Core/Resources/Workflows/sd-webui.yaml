@@ -1,0 +1,68 @@
+id: stable-diffusion-webui
+name: Stable Diffusion WebUI
+description: 基于 Gradio 的 Stable Diffusion 图形界面，支持文生图、图生图、ControlNet 等
+category: image-generation
+icon: "&#xE7C5"
+tags:
+  - image
+  - stable-diffusion
+  - ai-art
+
+requirements:
+  minVramGB: 4
+  recommendedVramGB: 8
+  minDiskSpaceBytes: 10737418240  # 10GB for base + models
+  requiredSoftware:
+    - git
+
+local:
+  type: conda
+  pythonVersion: "3.10"
+  packages: []
+  installScript: |
+    # Clone stable-diffusion-webui
+    git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
+    cd stable-diffusion-webui
+    
+    # Install dependencies
+    pip install -r requirements.txt
+    
+    # Download default model (optional, can be large)
+    # curl -L -o models/Stable-diffusion/v1-5-pruned-emaonly.safetensors \
+    #   "https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors"
+  launchCommand: "python launch.py --listen --port 7860"
+  webUiPort: 7860
+  setupSteps:
+    - name: 克隆仓库
+      command: git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
+    - name: 安装依赖
+      command: pip install -r requirements.txt
+      workingDir: stable-diffusion-webui
+    - name: 启动服务
+      command: python launch.py --listen --port 7860
+      background: true
+      port: 7860
+
+cloud:
+  type: docker
+  composeFile: |
+    version: '3.8'
+    services:
+      sd-webui:
+        image: atinoda/sd-webui:default
+        ports:
+          - "7860:7860"
+        volumes:
+          - sd-data:/app/stable-diffusion-webui
+        environment:
+          - CLI_ARGS=--listen --port 7860 --enable-insecure-extension-access
+        deploy:
+          resources:
+            reservations:
+              devices:
+                - driver: nvidia
+                  count: 1
+                  capabilities: [gpu]
+    
+    volumes:
+      sd-data:

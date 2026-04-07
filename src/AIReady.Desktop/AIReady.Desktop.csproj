@@ -58,6 +58,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AIReady.Shared\AIReady.Shared.csproj" />
+    <ProjectReference Include="..\AIReady.Local.Core\AIReady.Local.Core.csproj" />
   </ItemGroup>
 
   <!--

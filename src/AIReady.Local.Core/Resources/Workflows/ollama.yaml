@@ -1,0 +1,66 @@
+id: ollama-chatbox
+name: Ollama + OpenWebUI
+description: 本地大语言模型聊天环境，支持多种开源模型如 Llama、DeepSeek 等
+category: llm
+icon: "&#xE8BD"
+tags:
+  - llm
+  - chat
+  - local-ai
+
+requirements:
+  minVramGB: 4
+  recommendedVramGB: 8
+  minDiskSpaceBytes: 10737418240  # 10GB
+  requiredSoftware: []
+
+local:
+  type: conda
+  pythonVersion: "3.11"
+  packages:
+    - ollama
+    - open-webui
+  installScript: |
+    pip install ollama
+    echo "Ollama 安装完成"
+    echo "请在安装完成后手动下载模型: ollama pull llama3.2"
+  launchCommand: "ollama serve"
+  webUiPort: 11434
+  setupSteps:
+    - name: 安装 Ollama
+      command: pip install ollama
+    - name: 启动服务
+      command: ollama serve
+      background: true
+      port: 11434
+
+cloud:
+  type: docker
+  composeFile: |
+    version: '3.8'
+    services:
+      ollama:
+        image: ollama/ollama:latest
+        volumes:
+          - ollama-data:/root/.ollama
+        ports:
+          - "11434:11434"
+        deploy:
+          resources:
+            reservations:
+              devices:
+                - driver: nvidia
+                  count: 1
+                  capabilities: [gpu]
+      
+      open-webui:
+        image: ghcr.io/open-webui/open-webui:main
+        ports:
+          - "8080:8080"
+        environment:
+          - OLLAMA_BASE_URL=http://ollama:11434
+        depends_on:
+          - ollama
+    
+    volumes:
+      ollama-data:

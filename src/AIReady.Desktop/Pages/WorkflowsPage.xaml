@@ -11,6 +11,7 @@
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -20,27 +21,135 @@
                   FontSize="28"
                   FontWeight="Bold"
                   Foreground="White"
+                  Margin="0,0,0,8"/>
+
+        <!-- 副标题 -->
+        <TextBlock Grid.Row="1"
+                  Text="一键安装热门 AI 项目"
+                  FontSize="14"
+                  Opacity="0.7"
+                  Foreground="White"
                   Margin="0,0,0,20"/>
 
         <!-- 工作流列表 -->
-        <ScrollViewer Grid.Row="1">
-            <Border CornerRadius="8"
-                   Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
-                   Padding="40">
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <FontIcon Glyph="&#xE7BF;" FontSize="48" Opacity="0.6" Foreground="White"/>
-                    <TextBlock Text="工作流市场"
-                              FontSize="18"
-                              FontWeight="SemiBold"
-                              Foreground="White"
-                              Margin="0,16,0,8"
-                              HorizontalAlignment="Center"/>
-                    <TextBlock Text="即将推出，敬请期待"
-                              Opacity="0.6"
-                              Foreground="White"
-                              HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Border>
+        <ScrollViewer Grid.Row="2">
+            <GridView x:Name="WorkflowsGridView"
+                     SelectionMode="None"
+                     IsItemClickEnabled="True"
+                     ItemClick="WorkflowsGridView_ItemClick">
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Width="280" 
+                               Height="180"
+                               CornerRadius="12"
+                               Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
+                               Padding="16">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- 头部：图标和分类 -->
+                                <Grid Grid.Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.Column="0"
+                                           Width="40"
+                                           Height="40"
+                                           CornerRadius="8"
+                                           Background="#22FFFFFF">
+                                        <FontIcon Glyph="{Binding IconUrl}"
+                                                 FontSize="20"
+                                                 Foreground="White"/>
+                                    </Border>
+                                    <Border Grid.Column="1"
+                                           HorizontalAlignment="Right"
+                                           CornerRadius="4"
+                                           Padding="8,4"
+                                           Background="#33FFFFFF">
+                                        <TextBlock Text="{Binding Category}"
+                                                  FontSize="11"
+                                                  Foreground="White"
+                                                  Opacity="0.9"/>
+                                    </Border>
+                                </Grid>
+
+                                <!-- 内容区 -->
+                                <StackPanel Grid.Row="1" Margin="0,12,0,0">
+                                    <TextBlock Text="{Binding Name}"
+                                              FontSize="18"
+                                              FontWeight="SemiBold"
+                                              Foreground="White"
+                                              TextTrimming="CharacterEllipsis"/>
+                                    <TextBlock Text="{Binding Description}"
+                                              FontSize="12"
+                                              Foreground="White"
+                                              Opacity="0.7"
+                                              TextWrapping="Wrap"
+                                              MaxLines="2"
+                                              TextTrimming="CharacterEllipsis"
+                                              Margin="0,4,0,0"/>
+                                </StackPanel>
+
+                                <!-- 底部：要求 -->
+                                <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="8">
+                                    <TextBlock FontSize="11"
+                                              Foreground="White"
+                                              Opacity="0.6">
+                                        <Run Text="显存: "/>
+                                        <Run Text="{Binding Requirements.MinVramGB}"/>
+                                        <Run Text="GB+"/>
+                                    </TextBlock>
+                                    <TextBlock Text="|"
+                                              FontSize="11"
+                                              Foreground="White"
+                                              Opacity="0.4"/>
+                                    <TextBlock Text="{Binding Local.Type}"
+                                              FontSize="11"
+                                              Foreground="White"
+                                              Opacity="0.6"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+                <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ItemsWrapGrid MaximumRowsOrColumns="3"
+                                      Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </GridView.ItemsPanel>
+            </GridView>
         </ScrollViewer>
+
+        <!-- 加载状态 -->
+        <ProgressRing Grid.Row="2"
+                     x:Name="LoadingRing"
+                     IsActive="True"
+                     Width="48"
+                     Height="48"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"/>
+
+        <!-- 空状态 -->
+        <StackPanel Grid.Row="2"
+                   x:Name="EmptyState"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Visibility="Collapsed">
+            <FontIcon Glyph="&#xE7BF;" FontSize="64" Opacity="0.5" Foreground="White"/>
+            <TextBlock Text="暂无可用工作流"
+                      FontSize="18"
+                      FontWeight="SemiBold"
+                      Foreground="White"
+                      Margin="0,16,0,8"/>
+            <TextBlock Text="请检查应用安装是否完整"
+                      Opacity="0.6"
+                      Foreground="White"/>
+        </StackPanel>
     </Grid>
 </Page>

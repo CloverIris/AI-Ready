@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -7,6 +7,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AIReady.Desktop", "src\AIReady.Desktop\AIReady.Desktop.csproj", "{B2C3D4E5-F6A7-8901-BCDE-F23456789012}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AIReady.Service", "src\AIReady.Service\AIReady.Service.csproj", "{C3D4E5F6-A7B8-9012-CDEF-345678901234}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B4986D20-B77F-4811-BDE1-74E5E1EDAF1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIReady.Local.Core", "src\AIReady.Local.Core\AIReady.Local.Core.csproj", "{5368756A-BDB6-4105-B5FD-E745155A70D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,5 +44,16 @@ Global
 		{C3D4E5F6-A7B8-9012-CDEF-345678901234}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C3D4E5F6-A7B8-9012-CDEF-345678901234}.Release|x64.ActiveCfg = Release|Any CPU
 		{C3D4E5F6-A7B8-9012-CDEF-345678901234}.Release|x64.Build.0 = Release|Any CPU
+		{5368756A-BDB6-4105-B5FD-E745155A70D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5368756A-BDB6-4105-B5FD-E745155A70D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5368756A-BDB6-4105-B5FD-E745155A70D0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5368756A-BDB6-4105-B5FD-E745155A70D0}.Debug|x64.Build.0 = Debug|Any CPU
+		{5368756A-BDB6-4105-B5FD-E745155A70D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5368756A-BDB6-4105-B5FD-E745155A70D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5368756A-BDB6-4105-B5FD-E745155A70D0}.Release|x64.ActiveCfg = Release|Any CPU
+		{5368756A-BDB6-4105-B5FD-E745155A70D0}.Release|x64.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5368756A-BDB6-4105-B5FD-E745155A70D0} = {B4986D20-B77F-4811-BDE1-74E5E1EDAF1D}
 	EndGlobalSection
 EndGlobal
