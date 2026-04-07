@@ -50,15 +50,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Include="Pages\CloudPage.xaml" />
-    <Page Include="Pages\HelpPage.xaml" />
-    <Page Include="Pages\HomePage.xaml" />
-    <Page Include="Pages\LocalPage.xaml" />
-    <Page Include="Pages\SettingsPage.xaml" />
-    <Page Include="Pages\WorkflowsPage.xaml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.28000.1721" />
     <Manifest Include="$(ApplicationManifest)" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.260317003" />
