@@ -113,5 +113,16 @@
                    FontSize="18" 
                    Foreground="White" 
                    Text="AIReady"/>
+        
+        <!-- 标题栏左侧版本标签（必须在最上层） -->
+        <StackPanel x:Name="TitleBarLabelsPanel"
+                   Orientation="Horizontal"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Margin="52,12,0,0"
+                   Spacing="6"
+                   Canvas.ZIndex="100">
+            <!-- 标签将由代码动态生成 -->
+        </StackPanel>
     </Grid>
 </Window>

@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using AIReady.Shared.Models;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
@@ -67,6 +68,63 @@ namespace AIReady.Desktop
 
             // 子类化窗口过程，禁用标题栏双击
             SubclassWindowProc();
+
+            // 初始化标题栏版本标签
+            InitializeTitleBarLabels();
+        }
+
+        /// <summary>
+        /// 初始化标题栏左侧版本标签
+        /// 使用高对比度配色方案，三个标签分别使用不同颜色
+        /// </summary>
+        private void InitializeTitleBarLabels()
+        {
+            try
+            {
+                TitleBarLabelsPanel.Children.Clear();
+                
+                var labels = AppVersionInfo.GetTitleBarLabels();
+                
+                // 高对比度配色方案 - 三个标签分别使用不同颜色
+                // 参考 WinUI 3 系统颜色设计
+                var badgeStyles = new[]
+                {
+                    // [debug] - 深蓝色背景 + 白色文字（高对比度）
+                    new { Bg = ColorHelper.FromArgb(0xFF, 0x0, 0x4A, 0x77), Text = Colors.White },
+                    // [dev0.1.0] - 紫色背景 + 白色文字（高对比度）  
+                    new { Bg = ColorHelper.FromArgb(0xFF, 0x5C, 0x2D, 0x91), Text = Colors.White },
+                    // [WinUI3 1.8] - 亮青色背景 + 黑色文字（高对比度）
+                    new { Bg = ColorHelper.FromArgb(0xFF, 0x00, 0xCC, 0xDD), Text = Colors.Black }
+                };
+                
+                for (int i = 0; i < labels.Length; i++)
+                {
+                    var labelText = labels[i];
+                    var style = badgeStyles[Math.Min(i, badgeStyles.Length - 1)];
+                    
+                    var badge = new Border
+                    {
+                        CornerRadius = new CornerRadius(4),
+                        Padding = new Thickness(6, 2, 6, 2),
+                        Margin = new Thickness(0),
+                        Background = new SolidColorBrush(style.Bg),
+                        Child = new TextBlock
+                        {
+                            Text = labelText,
+                            FontSize = 11,
+                            FontWeight = Microsoft.UI.Text.FontWeights.SemiBold,
+                            Foreground = new SolidColorBrush(style.Text)
+                        }
+                    };
+                    
+                    TitleBarLabelsPanel.Children.Add(badge);
+                }
+            }
+            catch (Exception ex)
+            {
+                // 标签初始化失败不影响主功能
+                System.Diagnostics.Debug.WriteLine($"TitleBar labels init failed: {ex.Message}");
+            }
         }
 
         private void MainWindow_Activated(object sender, WindowActivatedEventArgs args)

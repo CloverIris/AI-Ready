@@ -71,9 +71,24 @@ namespace AIReady.Desktop.Pages
         {
             FileLogger.Log("OnNavigatedTo 被调用", "DEBUG");
             base.OnNavigatedTo(e);
+            
+            // 设置默认选中"全部"按钮
+            SetDefaultCategoryButton();
+            
             // 页面加载时自动获取数据
             _ = LoadServersAsync();
             FileLogger.Log("LoadServersAsync 已启动", "DEBUG");
+        }
+
+        /// <summary>
+        /// 设置默认选中的分类按钮（"全部"）
+        /// </summary>
+        private void SetDefaultCategoryButton()
+        {
+            if (CategoryFilterPanel.Children.Count > 0 && CategoryFilterPanel.Children[0] is Button allButton)
+            {
+                UpdateCategoryButtonStates(allButton);
+            }
         }
 
         /// <summary>
@@ -283,7 +298,35 @@ namespace AIReady.Desktop.Pages
                 var category = button.Tag?.ToString() ?? string.Empty;
                 _currentSearch = category;
                 McpSearchBox.Text = category;
+                
+                // 更新按钮选中状态
+                UpdateCategoryButtonStates(button);
+                
                 _ = LoadServersAsync();
+            }
+        }
+
+        /// <summary>
+        /// 更新分类按钮的选中状态
+        /// </summary>
+        private void UpdateCategoryButtonStates(Button selectedButton)
+        {
+            // 遍历所有分类按钮，更新样式
+            foreach (var child in CategoryFilterPanel.Children)
+            {
+                if (child is Button btn)
+                {
+                    if (btn == selectedButton)
+                    {
+                        // 选中按钮使用强调色样式
+                        btn.Style = Application.Current.Resources["AccentButtonStyle"] as Style;
+                    }
+                    else
+                    {
+                        // 未选中按钮使用默认样式
+                        btn.Style = Application.Current.Resources["DefaultButtonStyle"] as Style;
+                    }
+                }
             }
         }
 
