@@ -86,6 +86,12 @@
                     </NavigationViewItem.Icon>
                     <NavigationViewItem.Content>MCP 市场</NavigationViewItem.Content>
                 </NavigationViewItem>
+                <NavigationViewItem Tag="ApiDebuggerPage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE769;"/>
+                    </NavigationViewItem.Icon>
+                    <NavigationViewItem.Content>API 调试器</NavigationViewItem.Content>
+                </NavigationViewItem>
             </NavigationView.MenuItems>
             
             <!-- 底部菜单项 -->

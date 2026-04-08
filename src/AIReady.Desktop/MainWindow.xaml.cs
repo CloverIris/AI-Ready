@@ -43,6 +43,7 @@ namespace AIReady.Desktop
                 { "WorkflowsPage", new Pages.WorkflowsPage() },
                 { "SkillsStorePage", new Pages.SkillsStorePage() },
                 { "McpMarketplacePage", new Pages.McpMarketplacePage() },
+                { "ApiDebuggerPage", new Pages.ApiDebuggerPage() },
                 { "HelpPage", new Pages.HelpPage() },
                 { "SettingsPage", new Pages.SettingsPage() }
             };
