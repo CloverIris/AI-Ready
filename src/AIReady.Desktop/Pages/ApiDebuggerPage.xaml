@@ -185,7 +185,7 @@
                                                Click="EditEndpoint_Click"/>
                                         <ToggleSwitch IsOn="{Binding IsShared}" 
                                                      FontSize="10"
-                                                     Click="ToggleShare_Click"/>
+                                                     Toggled="ToggleShare_Toggled"/>
                                     </StackPanel>
                                 </Grid>
                             </Border>

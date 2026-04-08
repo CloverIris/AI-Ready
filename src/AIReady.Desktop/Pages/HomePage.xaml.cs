@@ -118,9 +118,5 @@ namespace AIReady.Desktop.Pages
             }
         }
 
-        private void QuickStartButton_Click(object sender, RoutedEventArgs e)
-        {
-            StatusText.Text = "正在启动向导...";
-        }
     }
 }

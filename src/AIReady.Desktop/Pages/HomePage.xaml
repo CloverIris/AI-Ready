@@ -39,12 +39,7 @@
                    VerticalAlignment="Bottom" 
                    HorizontalAlignment="Left" 
                    Orientation="Vertical">
-            <!-- 硬件信息显示 -->
-            <TextBlock x:Name="HardwareInfoText"
-                      Style="{ThemeResource CaptionTextBlockStyle}"
-                      Foreground="White"
-                      TextWrapping="Wrap"
-                      Margin="0,0,0,20"/>
+          
 
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="OpenLocalPage" 
@@ -67,26 +62,27 @@
                    VerticalAlignment="Bottom" 
                    HorizontalAlignment="Right" 
                    Orientation="Horizontal">
-            <StackPanel Grid.Row="1" 
-                       HorizontalAlignment="Center" 
-                       VerticalAlignment="Center"
-                       Spacing="10">
-                <Button x:Name="QuickStartButton"
+
+
+            <Button x:Name="QuickStartButton"
+                    Margin="0,0,20,0"
+                       CornerRadius="20" 
+                       Width="200" 
+                       Height="40"  
+                       Foreground="Black"
                        Style="{StaticResource AccentButtonStyle}"
-                       Click="QuickStartButton_Click">
-                    <StackPanel Orientation="Horizontal" Spacing="8">
-                        <FontIcon x:Name="StartIcon" 
-                                 Glyph="&#xE768;"/>
-                        <TextBlock x:Name="QuickStartText" 
-                                  Text="快速开始"/>
-                    </StackPanel>
-                </Button>
+                      >
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                <FontIcon x:Name="StartIcon" 
+               Glyph="&#xE768;"/>
+                <TextBlock x:Name="QuickStartText" 
+                Text="快速开始"/>
+        </StackPanel>
                 
-                <TextBlock x:Name="StatusText"
-                          Foreground="White"
-                          HorizontalAlignment="Center"/>
-            </StackPanel>
-            
+        </Button>
+
+
+
             <Button x:Name="OpenCloudPage" 
                    CornerRadius="20" 
                    Width="120" 
@@ -97,43 +93,54 @@
                     <FontIcon Margin="0,0,10,0" VerticalAlignment="Center" Glyph="&#xE753;" />
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Text="云端"/>
                 </StackPanel>
-            </Button>
+             </Button>
         </StackPanel>
-        
-        <!--右侧卡片展示组-->
+        <!--右侧顶部-->
+        <!-- 硬件信息显示 -->
+        <TextBlock x:Name="HardwareInfoText"
+                      VerticalAlignment="Top"
+                       HorizontalAlignment="Right"
+            Style="{ThemeResource CaptionTextBlockStyle}"
+            Foreground="White"
+            TextWrapping="Wrap"
+            Margin="20"
+            Width="400" />
+        <!--左侧卡片展示组-->
         <StackPanel Margin="50" 
                    VerticalAlignment="Center"  
-                   HorizontalAlignment="Right" 
+                   HorizontalAlignment="Left" 
                    Orientation="Vertical">
             <!--轮播图-->
-            <StackPanel HorizontalAlignment="Right" Margin="0,0,20,-25">
+            <!--<StackPanel HorizontalAlignment="Right" Margin="0,10,20,-25">
                 <Image Width="270" 
                        Height="200" 
                        Source="\picture\How-to-Use-DeepSeek-R1.jpg"/>
-            </StackPanel>
+            </StackPanel>-->
             
             <!--资讯、公告、活动和教程-->
-            <Border CornerRadius="10" 
+            <Border Margin="0,220,0,0" CornerRadius="10" 
                    Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}">
-                <Pivot HorizontalAlignment="Right" 
+                <StackPanel Orientation="Vertical" Width="320">
+                    <Pivot HorizontalAlignment="Right" 
                       Height="160" 
-                      Width="300">
-                    <PivotItem Header="资讯">
-                        <TextBlock HorizontalAlignment="Stretch" 
+                      >
+                        <PivotItem Header="资讯">
+                            <TextBlock HorizontalAlignment="Stretch" 
                                   Margin="5" 
                                   TextWrapping="Wrap" 
                                   Text="AI-Ready 项目启动，致力于让每个人都能轻松部署和使用开源 AI。"/>
-                    </PivotItem>
-                    <PivotItem Header="公告">
-                        <TextBlock Text="当前为早期预览版本，功能持续开发中。" />
-                    </PivotItem>
-                    <PivotItem Header="活动">
-                        <TextBlock Text="参与开源贡献，共建 AI 生态。" />
-                    </PivotItem>
-                    <PivotItem Header="教程">
-                        <TextBlock Text="查看文档了解如何使用 AI-Ready 部署您的第一个 AI 项目。" />
-                    </PivotItem>
-                </Pivot>
+                        </PivotItem>
+                        <PivotItem Header="公告">
+                            <TextBlock Text="当前为早期预览版本，功能持续开发中。" />
+                        </PivotItem>
+                        <PivotItem Header="活动">
+                            <TextBlock Text="参与开源贡献，共建 AI 生态。" />
+                        </PivotItem>
+                        <PivotItem Header="教程">
+                            <TextBlock Text="查看文档了解如何使用 AI-Ready 部署您的第一个 AI 项目。" />
+                        </PivotItem>
+                    </Pivot>
+                </StackPanel>
             </Border>
         </StackPanel>
     </Grid>

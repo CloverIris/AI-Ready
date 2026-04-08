@@ -21,6 +21,9 @@ namespace AIReady.Desktop.Pages
     /// </summary>
     public sealed partial class ApiDebuggerPage : Page
     {
+        // 防止多个 ContentDialog 同时显示
+        private static bool _isDialogShowing = false;
+        
         // 视图模型
         public class EndpointViewModel
         {
@@ -225,9 +228,13 @@ namespace AIReady.Desktop.Pages
             ShowNotImplementedDialog("编辑端点配置");
         }
 
-        private void ToggleShare_Click(object sender, RoutedEventArgs e)
+        private void ToggleShare_Toggled(object sender, RoutedEventArgs e)
         {
-            ShowNotImplementedDialog("切换共享状态");
+            if (sender is ToggleSwitch toggle)
+            {
+                var isOn = toggle.IsOn;
+                ShowNotImplementedDialog($"切换共享状态: {(isOn ? "开启" : "关闭")}");
+            }
         }
 
         private void DisconnectDevice_Click(object sender, RoutedEventArgs e)
@@ -238,19 +245,37 @@ namespace AIReady.Desktop.Pages
         #endregion
 
         /// <summary>
-        /// 显示功能开发中提示
+        /// 显示功能开发中提示（防止重复显示）
         /// </summary>
         private async void ShowNotImplementedDialog(string feature)
         {
-            var dialog = new ContentDialog
-            {
-                Title = "功能开发中",
-                Content = $"'{feature}' 功能正在开发中，敬请期待！\n\n完整功能包括：\n- API 端点管理\n- 健康检测\n- 局域网代理\n- 审计统计",
-                CloseButtonText = "确定",
-                XamlRoot = this.XamlRoot
-            };
+            // 防止多个 ContentDialog 同时显示
+            if (_isDialogShowing)
+                return;
 
-            await dialog.ShowAsync();
+            try
+            {
+                _isDialogShowing = true;
+                
+                var dialog = new ContentDialog
+                {
+                    Title = "功能开发中",
+                    Content = $"'{feature}' 功能正在开发中，敬请期待！\n\n完整功能包括：\n- API 端点管理\n- 健康检测\n- 局域网代理\n- 审计统计",
+                    CloseButtonText = "确定",
+                    XamlRoot = this.XamlRoot
+                };
+
+                await dialog.ShowAsync();
+            }
+            catch (Exception ex)
+            {
+                // 忽略对话框显示异常
+                System.Diagnostics.Debug.WriteLine($"Dialog show failed: {ex.Message}");
+            }
+            finally
+            {
+                _isDialogShowing = false;
+            }
         }
     }
 }
