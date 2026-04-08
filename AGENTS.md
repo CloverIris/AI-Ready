@@ -39,7 +39,7 @@ AIReady/
 │   │   ├── Pages/                 # 页面
 │   │   ├── picture/               # 图片资源
 │   │   └── Assets/                # 应用图标
-│   ├── AIReady.Shared/            # 共享库 (.NET Standard 2.1)
+│   ├── AIReady.Shared/            # 共享库 (.NET 8.0)
 │   ├── AIReady.Service/           # SaaS 后端 (.NET Core)
 │   └── AIReady.Agent/             # 云端 Agent (Go)
 └── AGENTS.md                      # 本文件

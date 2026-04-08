@@ -40,6 +40,8 @@ namespace AIReady.Desktop
                 { "LocalPage", new Pages.LocalPage() },
                 { "CloudPage", new Pages.CloudPage() },
                 { "WorkflowsPage", new Pages.WorkflowsPage() },
+                { "SkillsStorePage", new Pages.SkillsStorePage() },
+                { "McpMarketplacePage", new Pages.McpMarketplacePage() },
                 { "HelpPage", new Pages.HelpPage() },
                 { "SettingsPage", new Pages.SettingsPage() }
             };

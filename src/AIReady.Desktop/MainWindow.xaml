@@ -74,6 +74,18 @@
                     </NavigationViewItem.Icon>
                     <NavigationViewItem.Content>工作流</NavigationViewItem.Content>
                 </NavigationViewItem>
+                <NavigationViewItem Tag="SkillsStorePage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE74C;"/>
+                    </NavigationViewItem.Icon>
+                    <NavigationViewItem.Content>Skills 商店</NavigationViewItem.Content>
+                </NavigationViewItem>
+                <NavigationViewItem Tag="McpMarketplacePage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE774;"/>
+                    </NavigationViewItem.Icon>
+                    <NavigationViewItem.Content>MCP 市场</NavigationViewItem.Content>
+                </NavigationViewItem>
             </NavigationView.MenuItems>
             
             <!-- 底部菜单项 -->
